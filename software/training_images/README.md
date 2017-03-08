@@ -1,1 +1,0 @@
-Conjunto de imágenes utilizadas para entrenar el clasificador
