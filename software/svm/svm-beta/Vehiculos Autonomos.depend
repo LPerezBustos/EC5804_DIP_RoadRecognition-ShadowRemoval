@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1487300042 source:/home/sircoko/Dropbox/Materias/Vision por Computador/proyecto/Vehiculos Autonomos/main.cpp
+	<opencv2/opencv.hpp>
+	<iostream>
+	<opencv2/imgproc.hpp>
+	"opencv2/imgcodecs.hpp"
+	<opencv2/core.hpp>
+	<opencv2/highgui.hpp>
+	"opencv2/ml/ml.hpp"
+
