@@ -3,13 +3,14 @@
 #include "opencv2/imgproc/imgproc.hpp"
 #include <iostream>
 #include <stdio.h>
+//#include "types_c.h"
 
 using namespace std;
 using namespace cv;
 
 int main(){
 	//Nombre de la imagen que se va a cargar
-	char IMAGE_NAME[] = "road_and_shadow_2.jpg";
+	char IMAGE_NAME[] = "road_and_shadow.jpg";
 
 	//Cargamos las imagenes y se comprueba que lo ha hecho correctamente
 	Mat src = imread(IMAGE_NAME);
@@ -18,20 +19,30 @@ int main(){
 		exit(1);
 	}
 
-	/*vector<Mat> bgr_planes, H, S, V;
+	vector<Mat> bgr_planes;
 	split(src, bgr_planes);
-
    namedWindow("Original", CV_WINDOW_AUTOSIZE), imshow("Original", src);
    namedWindow("BLUE PLANE", CV_WINDOW_AUTOSIZE), imshow("BLUE PLANE", bgr_planes[0]);
    namedWindow("GREEN PLANE", CV_WINDOW_AUTOSIZE), imshow("GREEN PLANE", bgr_planes[1]);
-   namedWindow("RED PLANE", CV_WINDOW_AUTOSIZE), imshow("RED PLANE", bgr_planes[2]);*/
-   Mat hsv_image
-   for (int y = 0; y < src.cols; y++){
-       for(int x = 0; x < img.rows; x++){
-          image.at<cv::Vec3b>(y,x)[0]
-          uchar *blue = ((uchar*)(img->imageData + img->widthStep*y))[x*3];
-          uchar *green = ((uchar*)(img->imageData + img->widthStep*y))[x*3+1];
-          uchar *red = ((uchar*)(img->imageData + img->widthStep*y))[x*3+2];
+   namedWindow("RED PLANE", CV_WINDOW_AUTOSIZE), imshow("RED PLANE", bgr_planes[2]);
+
+   Mat srcHSV;
+   cvtColor(src, srcHSV, CV_BGR2HSV);
+	vector<Mat> hsv_planes;
+	split(srcHSV, hsv_planes);
+   namedWindow("HSV", CV_WINDOW_AUTOSIZE), imshow("HSV", srcHSV);
+   namedWindow("HUE PLANE", CV_WINDOW_AUTOSIZE), imshow("HUE PLANE", hsv_planes[0]);
+   namedWindow("SATURATION PLANE", CV_WINDOW_AUTOSIZE), imshow("SATURATION PLANE", hsv_planes[1]);
+   namedWindow("INTENSITY PLANE", CV_WINDOW_AUTOSIZE), imshow("INTENSITY PLANE", hsv_planes[2]);
+
+   Mat ndi_image = Mat::zeros(srcHSV.rows, srcHSV.cols, CV_8UC1);
+   int tono, saturacion, valor;
+   for (int y = 0; y < srcHSV.cols; y++){
+       for(int x = 0; x < srcHSV.rows; x++){
+          tono = srcHSV.at<cv::Vec3b>(y,x)[0];
+          saturacion = srcHSV.at<cv::Vec3b>(y,x)[1];
+          valor = srcHSV.at<cv::Vec3b>(y,x)[2];
+          ndi_image.at<cv::Vec2d>(x,y) = (saturacion - valor)/(saturacion + valor);
        }
    }
 
