@@ -1,9 +1,9 @@
-Programa encargado del filtrar y eliminar sombras.
+Etapa de filtrado:  
 
 ENTRADA: Imagen RGB de vía con posibles sobras.
-SALIDA:  Imagen RGB de vía con sombras corregidas.
+SALIDA:  Imagen RGB de vía con compensanción de sombras.
 
-RESONSABLE: Luis
+RESPONSABLE: LPerezBustos
 
 ***Solución basada en el paper***
 
