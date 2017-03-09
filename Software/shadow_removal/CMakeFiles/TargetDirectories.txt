@@ -1,0 +1,3 @@
+/home/lperezbustos/github/PDI_shadowremoval/Software/shadow_removal/CMakeFiles/edit_cache.dir
+/home/lperezbustos/github/PDI_shadowremoval/Software/shadow_removal/CMakeFiles/rebuild_cache.dir
+/home/lperezbustos/github/PDI_shadowremoval/Software/shadow_removal/CMakeFiles/shadow_removal.dir
