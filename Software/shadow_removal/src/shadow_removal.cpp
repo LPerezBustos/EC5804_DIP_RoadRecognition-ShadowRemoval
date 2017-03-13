@@ -80,10 +80,8 @@ int main(){
 	namedWindow("BINARY IMAGE", CV_WINDOW_AUTOSIZE), imshow("BINARY IMAGE", otsu_image);
 	cout << "The OTSU threshold is " << umbral << endl;
 	imwrite("otsu_image.jpg", otsu_image);
-	// find connected components using OpenCV method
-	//Mat labelImage(otsu_image.size(), CV_16UC1);
-	//int nLabels = connectedComponents(otsu_image, labelImage, 8, CV_16U);
-	//cout << "The number of connected components using OpenCV function is " << nLabels << endl;
+	// find sample pixels
+	// *** SOME METHOD TO FIND SEED PIXELS IN SHADOWS ***
 	// find connected components using paper method
 	int dilation_size = 1;
 	cout << "structure element in shadow classfication stage is (" << 2*dilation_size+1 << "x" << 2*dilation_size+1 << ")" << endl;
@@ -91,10 +89,10 @@ int main(){
 						Point(dilation_size, dilation_size));
 	// seed pixels in connected components
 	Mat Io = Mat::zeros(otsu_image.rows, otsu_image.cols, CV_8UC1);
-	Io.at<uchar>(CONNECTED_1_X,CONNECTED_1_Y) = 255;
-	Io.at<uchar>(CONNECTED_2_X,CONNECTED_2_Y) = 255;
+	//Io.at<uchar>(CONNECTED_1_X,CONNECTED_1_Y) = 255;
+	//Io.at<uchar>(CONNECTED_2_X,CONNECTED_2_Y) = 255;
 	Io.at<uchar>(CONNECTED_3_X,CONNECTED_3_Y) = 255;
-	Io.at<uchar>(CONNECTED_4_X,CONNECTED_4_Y) = 255;
+	//Io.at<uchar>(CONNECTED_4_X,CONNECTED_4_Y) = 255;
 	// shadow classfication
 	Mat Idilate(otsu_image.size(), CV_8UC1);
 	Mat Ishadow(otsu_image.size(), CV_8UC1);
@@ -116,7 +114,38 @@ int main(){
 	shadow_borders = shadow_borders - Idilate;
 	namedWindow("BUFFER AREA ESTIMATION", CV_WINDOW_AUTOSIZE), imshow("BUFFER AREA ESTIMATION", shadow_borders);
 	// compensate the shadows
-	
+	Scalar border_mean, border_stddev, border_variance, shadow_mean, shadow_stddev, shadow_variance;
+	meanStdDev(srcHSV, shadow_mean, shadow_stddev, Ishadow);
+	cout << "Mean and StdDev of first shadow" << endl;
+	cout << shadow_mean[0] << " " << shadow_mean[1] << " " << shadow_mean[2] << endl;
+	cout << shadow_stddev[0] << " " << shadow_stddev[1] << " " << shadow_stddev[2] << endl;
+	meanStdDev(srcHSV, border_mean, border_stddev, shadow_borders);
+	cout << "Mean and StdDev of buffer area in first shadow" << endl;
+	cout << border_mean[0] << " " << border_mean[1] << " " << border_mean[2] << endl;
+	cout << border_stddev[0] << " " << border_stddev[1] << " " << border_stddev[2] << endl;
+	pow(border_stddev, 2, border_variance);
+	pow(shadow_stddev, 2, shadow_variance);
+	Scalar variance_ratio;
+	divide(shadow_variance, border_variance, variance_ratio);
+	cout << "Variance ratio --> H S V" << endl;
+	cout << variance_ratio[0] << " " << variance_ratio[1] << " " << variance_ratio[2] << endl;
+	int j;
+	for(i=0; i<Ishadow.rows; i++){
+		for(j=0; j<Ishadow.cols; j++){
+			uchar pix = Ishadow.at<uchar>(i,j);
+			if(pix){
+				Scalar pix_value = srcHSV.at<Vec3b>(i,j);
+				srcHSV.at<Vec3b>(i,j)[0] = border_mean[0] + variance_ratio[0]*(pix_value.val[0] - shadow_mean[0]);
+				srcHSV.at<Vec3b>(i,j)[1] = border_mean[1] + variance_ratio[1]*(pix_value.val[1] - shadow_mean[1]);
+				srcHSV.at<Vec3b>(i,j)[2] = border_mean[2] + variance_ratio[2]*(pix_value.val[2] - shadow_mean[2]);
+				//Scalar pix_value2 = srcHSV.at<Vec3b>(i,j);
+				//std::cout << pix_value[2] << " " << pix_value2[2] << endl;
+			}
+		}
+	}
+	namedWindow("HSV image without Shadows", CV_WINDOW_AUTOSIZE), imshow("HSV image without Shadows", srcHSV);
+   cvtColor(srcHSV, src, CV_HSV2BGR);
+	namedWindow("RGB image without Shadows", CV_WINDOW_AUTOSIZE), imshow("RGB image without Shadows", src);
 	cvWaitKey(0);
 	return 0;
 }
