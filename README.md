@@ -1,8 +1,6 @@
 # Paper implementation for Autonomous Vehicle Project
 
-Colaborative project for Digital Image Processing (EC5804) undergraduate coursework.\\ 
-Prof: Gerardo Fernández
-January-March 2017.
+Colaborative project for Digital Image Processing (EC5804) undergraduate coursework.  Prof: Gerardo Fernández.  January-March 2017.
 
 Academic Paper: 
 "Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenarios"
