@@ -1,4 +1,4 @@
-# Autonomous Vehicle Project in EC5804 coursework
+### Autonomous Vehicle Project in EC5804 coursework
 
 Proyecto colaborativo para la materia de Procesamiento Digital de Imagenes. 
 Prof: Gerardo Fernández
