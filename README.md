@@ -6,7 +6,7 @@ January-March 2017.<br />
 <br />
 Academic Paper:<br />
 ["Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenarios"
-By Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva](Papers/Agunbiade et al. - 2013 - Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenario.pdf)
+By Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva](https://github.com/LPerezBustos/EC5804_DIP_RoadRecognition-ShadowRemoval/blob/master/Papers/Agunbiade%20et%20al.%20-%202013%20-%20Enhancement%20Performance%20of%20Road%20Recognition%20System%20of%20Autonomous%20Robots%20in%20Shadow%20Scenario.pdf)
 
 ## Results
 ### Entry image:
