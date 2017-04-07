@@ -45,7 +45,7 @@ int main( int argc, char** argv ) {
 
     //**CLASIFICACION**/
 
-    Mat img = imread("training-data/urs.jpg");  //se carga la imagen y se convierte a punto flotante de 32bits (necesario por la libreria para el clasificador)
+    Mat img = imread("road.jpg");  //se carga la imagen y se convierte a punto flotante de 32bits (necesario por la libreria para el clasificador)
     cv::Mat img32(img.rows, img.cols, CV_32FC3);
     Mat markerMask(img32.rows,img32.cols,CV_32FC3),dst(img32.rows,img32.cols,CV_32FC3);
     Mat img132[3];
@@ -53,8 +53,6 @@ int main( int argc, char** argv ) {
     split(img32,img132);
 
     imshow("original",img32); //se muestra la imagen original (ya en 32bits)
-
-
 
     cout<<"Antes del for: R->"<<img32.rows<<" C->"<<img32.cols<<endl; //mostrar en pantalla el tamaño de la imagen ROWS, COLS.
     int i,j; //variables para iterar sobre los pixeles de la imagen
@@ -89,8 +87,12 @@ int main( int argc, char** argv ) {
             dilate( markerMask, markerMask,element);
 
 
-            imshow("marker",markerMask);  //Se muestra la imagen Máscara
+            imshow("marker", markerMask);  //Se muestra la imagen Máscara
             addWeighted( img32, 0.7, markerMask, 0.3, 0.0, dst); //Se superpone la mascara sobre la imagen original
-            imshow("Reconocimiento",dst); //Se muestra el resultado final
+    				markerMask.convertTo(markerMask, CV_8UC3, 255.0);
+					imwrite("Road-Mask.jpg", markerMask);
+            imshow("Reconocimiento", dst); //Se muestra el resultado final
+    				dst.convertTo(dst, CV_8UC3, 255.0);
+					imwrite("Final-Road-Recognition.jpg", dst);
             waitKey(0);
 }
