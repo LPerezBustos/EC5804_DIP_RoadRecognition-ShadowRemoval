@@ -5,8 +5,8 @@ Prof: Gerardo Fernández.<br />
 January-March 2017.<br />
 <br />
 Academic Paper:<br />
-"Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenarios"
-By Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva
+["Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenarios"
+By Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva](Papers/Agunbiade et al. - 2013 - Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenario.pdf)
 
 ## Results
 ### Entry image:
