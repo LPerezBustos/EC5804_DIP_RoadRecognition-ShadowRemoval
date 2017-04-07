@@ -1,12 +1,12 @@
 # Autonomous Vehicle Project in EC5804 coursework
 
-Proyecto colaborativo para la materia de Procesamiento Digital de Imagenes. 
+Colaborative project for Digital Image Processing (EC5804) undergraduate coursework. 
 Prof: Gerardo Fernández
-Enero Marzo 2017.
+January-March 2017.
 
-Implementación de paper: 
+Academic Paper: 
 "Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenarios"
-Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva
+By Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva
 
 ## Results
 ### Entry image:
@@ -15,5 +15,5 @@ Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva
 ![shadow_removed_picture](software/svm/road.jpg)
 ### Road mask after shadow classification:
 ![road_mask_picture](software/svm/Road-Mask.jpg)
-### Original image after road classification algortihm:
+### Original image after road classification algorithm:
 ![final_road_recognition_picture](software/svm/Final-Road-Recognition.jpg)
