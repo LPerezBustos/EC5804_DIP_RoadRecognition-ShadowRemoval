@@ -3,6 +3,7 @@
 Colaborative project for Digital Image Processing (EC5804) undergraduate coursework.<br />
 Prof: Gerardo Fernández.<br />
 January-March 2017.<br />
+<br />
 Academic Paper:<br />
 "Enhancement Performance of Road Recognition System of Autonomous Robots in Shadow Scenarios"
 By Olusanya Y. Agunbiade, Tranos Zuva, Awosejo O. Johnson and Keneilwe Zuva
